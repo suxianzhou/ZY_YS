@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+    <entity name="RWBanners" representedClassName="RWBanners" syncable="YES">
+        <attribute name="contenturl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="imageurl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="RWCollectClass" representedClassName="RWCollectClass" syncable="YES">
+        <attribute name="hubtitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subjectclass" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="RWCollectHub" representedClassName="RWCollectHub" syncable="YES">
+        <attribute name="hubtitle" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="RWCollectsubject" representedClassName="RWCollectsubject" syncable="YES">
+        <attribute name="a" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="analysis" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="answer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="b" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="c" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="choose" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="collectState" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="e" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hub" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numberOfTimes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="subject" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subjectclass" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="RWSubjectClass" representedClassName="RWSubjectClass" syncable="YES">
+        <attribute name="hub" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subjectclass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uploaddate" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="RWSubjectHub" representedClassName="RWSubjectHub" syncable="YES">
+        <attribute name="formalDBSize" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="formalDBURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hubClass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="testDBSize" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="testDBURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="RWSubjectHubClass" representedClassName="RWSubjectHubClass" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uploaddate" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="RWSubjects" representedClassName="RWSubjects" syncable="YES">
+        <attribute name="a" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="analysis" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="answer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="answerstate" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="b" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="c" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="choose" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="e" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hub" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subject" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subjectclass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subjectnumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="RWCollectClass" positionX="-18" positionY="117" width="128" height="75"/>
+        <element name="RWCollectHub" positionX="0" positionY="135" width="128" height="60"/>
+        <element name="RWCollectsubject" positionX="-9" positionY="126" width="128" height="240"/>
+        <element name="RWSubjectClass" positionX="-36" positionY="9" width="128" height="90"/>
+        <element name="RWSubjectHub" positionX="-18" positionY="45" width="128" height="135"/>
+        <element name="RWSubjectHubClass" positionX="-18" positionY="99" width="128" height="75"/>
+        <element name="RWSubjects" positionX="0" positionY="45" width="128" height="240"/>
+        <element name="RWBanners" positionX="-18" positionY="162" width="128" height="105"/>
+    </elements>
+</model>

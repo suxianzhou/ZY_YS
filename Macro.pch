@@ -1,0 +1,57 @@
+
+//
+//  Macro.pch
+//  ZhongYuSubjectHubKY
+//
+//  Created by zhongyu on 16/4/26.
+//  Copyright © 2016年 RyeWhiskey. All rights reserved.
+//
+
+#ifndef Macro_pch
+#define Macro_pch
+
+#import <Masonry.h>
+#import "RWDeployManager.h"
+#import "RWDeployManager+DateProcess.h"
+#import "UIColor+Wonderful.h"
+#import "SVProgressHUD.h"
+
+#define MAIN_COLOR [UIColor colorWithRed:208.0/255.0 green:34.0/255.0 blue:35.0/255.0 alpha:1.0]
+
+#define HIDDEN_NOTIFICATION @"hiddenNoti"
+
+#define UNHIDDEN_NOTIFICATION @"unhiddenNoti"
+
+#define MAIN_NAV [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Navbar"] forBarMetrics:UIBarMetricsDefault];
+
+#define HIDDEN_TABBAR [[NSNotificationCenter defaultCenter] postNotificationName:HIDDEN_NOTIFICATION object:nil];
+
+#define SHOW_TABBAR [[NSNotificationCenter defaultCenter] postNotificationName:UNHIDDEN_NOTIFICATION object:nil];
+
+#define TASTE @"tasteListInfoBaseMark"
+
+#define REACHABILITY_STATUS_MESSAGE @"reachabilityStatus"
+
+
+#define CACHE_PATH [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
+
+#define SANDBOX_PATH [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
+
+#define DEPLOY_PLIST [SANDBOX_PATH stringByAppendingPathComponent:@"deploy.plist"]
+
+
+#define __IPHONE_DEVICE__ ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+
+#define __IPAD_DEVICE__ ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+
+#if DEBUG
+#define CONSOLE_LOG(...) NSLog(__VA_ARGS__)
+#endif
+
+
+
+//#endif
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* Macro_pch */
