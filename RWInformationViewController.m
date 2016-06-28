@@ -255,7 +255,6 @@ static NSString *const classListCell = @"classListCell";
                 [RWRequsetManager warningToViewController:self
                                                     Title:@"网络请求失败，请检查网络"
                                                     Click:nil];
-                
                 return ;
             }
             
@@ -325,12 +324,6 @@ static NSString *const classListCell = @"classListCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 100;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-    
 }
 
 @end
