@@ -12,7 +12,6 @@
 #import "RWMoreViewController.h"
 #import "RWSubjectCatalogueController.h"
 #import "UMCommunity.h"
-#import "RWQuackViewController.h"
 
 @interface RWTabBarViewController ()
 
@@ -98,7 +97,7 @@
 
 - (void)initResource
 {
-    _names = @[@"资讯",@"题目练习",@"",@"直播课",@"更多"];
+    _names = @[@"资讯",@"题目练习",@"",@"视频",@"更多"];
     
     _images = @[[UIImage imageNamed:@"noti"],
                 [UIImage imageNamed:@"main"],
@@ -324,50 +323,6 @@
         self.selectedIndex = tag - 2;
     }
 }
-
-- (void)quack
-{
-    RWQuackViewController *quack = [[RWQuackViewController alloc] init];
-    
-    UINavigationController *notiNav = [[UINavigationController alloc]initWithRootViewController:quack];
-    
-    NSMutableArray *arr = [self.viewControllers mutableCopy];
-    
-    [arr removeObjectAtIndex:2];
-    [arr insertObject:notiNav atIndex:2];
-    
-    self.viewControllers = [arr copy];
-    
-    [self.tabBar addSubview:coverLayer];
-
-    _names = @[@"资讯",@"题目练习",@"",@"行情参考",@"更多"];
-    
-    _images = @[[UIImage imageNamed:@"noti"],
-                [UIImage imageNamed:@"main"],
-                [UIImage imageNamed:@"noti"],
-                [UIImage imageNamed:@"error"],
-                [UIImage imageNamed:@"set"]];
-    
-    _selectImages = @[[UIImage imageNamed:@"noti_s"],
-                      [UIImage imageNamed:@"mian_s"],
-                      [UIImage imageNamed:@"noti"],
-                      [UIImage imageNamed:@"error_s"],
-                      [UIImage imageNamed:@"set_s"]];
-    
-    UIView *view = [self.view viewWithTag:4];
-    
-    [self addGestureRecognizerToView:view];
-    
-    UIImageView *imageItem = (UIImageView *)[self.view viewWithTag:40];
-    
-    imageItem.image = [UIImage imageNamed:@"error"];
-    
-    UILabel *nameLabel = [self.view viewWithTag:400];
-    
-    nameLabel.text = @"行情参考";
-    
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -61,16 +61,16 @@
     
     requestManager.delegate = self;
     
-    [requestManager obtainBanners:^(NSArray *banners) {
-       
-        XCTAssertNotNil(banners);
-        
-        XCTAssertEqual(banners.count, 4);
-        
-        CFRunLoopRef runLoopRef = CFRunLoopGetCurrent();
-        CFRunLoopStop(runLoopRef);
-        
-    }];
+//    [requestManager obtainBanners:^(NSArray *banners) {
+//       
+//        XCTAssertNotNil(banners);
+//        
+//        XCTAssertEqual(banners.count, 4);
+//        
+//        CFRunLoopRef runLoopRef = CFRunLoopGetCurrent();
+//        CFRunLoopStop(runLoopRef);
+//        
+//    }];
     
     CFRunLoopRun();
     

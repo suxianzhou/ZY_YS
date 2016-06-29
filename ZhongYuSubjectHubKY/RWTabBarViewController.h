@@ -12,6 +12,4 @@
 
 - (void)toRootViewController;
 
-- (void)quack;
-
 @end
