@@ -19,7 +19,7 @@
 
 #define NAV_TITLE @"医师资讯"
 
-#define MAIN_INDEX [NSURL URLWithString:@"http://yx.zhongyuedu.com/tiku/news/"]
+#define MAIN_INDEX [NSURL URLWithString:@"http://www.zhongyuedu.com/tgm/test/test11/index_yxm.html"]
 //>> 资讯
 #define SERVERS_INDEX @"http://www.zhongyuedu.com/api/tk_examType_encrypted.php"
 //>> 题库目录

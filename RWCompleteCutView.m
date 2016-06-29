@@ -327,6 +327,7 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
     
     if (_contentDatas.count == 1 && distance.x < 0.0f)
     {
+        translucentView.alpha = 0.0f;
         return;
     }
     else if (_contentDatas.count == 1 && distance.x > 0.0f)
@@ -374,31 +375,37 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
     {
         if (_angles < -0.15f)
         {
-            CGAffineTransform transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, -0.5);
+            __block CGAffineTransform transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, -0.5);
             
             [UIView animateWithDuration:0.2f animations:^{
-               
-                panGesture.view.transform = transform;
-            }];
-            
-            self.userInteractionEnabled = NO;
-            
-            [_delegate revolveDidChangeViewWithState:RWChangeViewStateToNextView];
-            
-            transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, 0.005f);
-            
-            panGesture.view.transform = transform;
-            
-            _angles = 0;
-            
-            transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, _angles);
-            
-            translucentView.transform = transform;
-            
-            [UIView animateWithDuration:0.1f animations:^{
-
+                
                 panGesture.view.transform = transform;
                 
+            } completion:^(BOOL finished) {
+               
+                self.userInteractionEnabled = NO;
+                
+                [_delegate revolveDidChangeViewWithState:RWChangeViewStateToNextView];
+                
+                [UIView animateWithDuration:0.05f animations:^{
+                    
+                    transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, 0.02f);
+                    
+                    panGesture.view.transform = transform;
+                    
+                } completion:^(BOOL finished) {
+                    
+                    _angles = 0;
+                    
+                    transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, _angles);
+                    
+                    translucentView.transform = transform;
+
+                    [UIView animateWithDuration:0.2f animations:^{
+                       
+                        panGesture.view.transform = transform;
+                    }];
+                }];
             }];
         }
         else if (_angles > 0.15f)

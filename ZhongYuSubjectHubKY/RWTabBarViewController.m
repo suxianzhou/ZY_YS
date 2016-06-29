@@ -97,7 +97,7 @@
 
 - (void)initResource
 {
-    _names = @[@"资讯",@"题目练习",@"",@"直播课",@"更多"];
+    _names = @[@"资讯",@"题目练习",@"",@"视频",@"更多"];
     
     _images = @[[UIImage imageNamed:@"noti"],
                 [UIImage imageNamed:@"main"],

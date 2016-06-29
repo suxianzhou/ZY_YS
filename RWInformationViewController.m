@@ -12,6 +12,7 @@
 #import "RWRequsetManager.h"
 #import "RWCompleteCutView.h"
 #import "RWClassListModel.h"
+#import "DWCustomPlayerViewController.h"
 
 @interface RWInformationViewController ()
 
@@ -51,7 +52,15 @@
 
 - (void)buttonDidClickWithIndexPath:(NSIndexPath *)indexPath
 {
+    DWCustomPlayerViewController *player = [[DWCustomPlayerViewController alloc]
+                                                    initWithvideoClassModel:
+                                                            classSource[indexPath.row]];
     
+    self.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:player animated:YES];
+    
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 - (void)initBar
@@ -71,25 +80,28 @@
 {
     [super viewDidAppear:animated];
     
-    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-    
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
-    
-    [SVProgressHUD setFont:[UIFont systemFontOfSize:14]];
-    
-    [SVProgressHUD showWithStatus:@"正在加载..."];
-    
     if (!requsetManager)
     {
         requsetManager = [[RWRequsetManager alloc] init];
         requsetManager.delegate = self;
-        
-        [requsetManager obtainClassList];
     }
     
     if (requsetManager.delegate != self)
     {
         requsetManager.delegate = self;
+    }
+    
+    if (!classSource)
+    {
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+        
+        [SVProgressHUD setFont:[UIFont systemFontOfSize:14]];
+        
+        [SVProgressHUD showWithStatus:@"正在加载..."];
+        
+        [requsetManager obtainClassList];
     }
 }
 

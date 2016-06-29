@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>DWMoviePlayerController Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">CCSDK2.3.11 </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">cc</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/drmServerPort">drmServerPort</option>
+		
+		<option value="//api/name/failBlock">failBlock</option>
+		
+		<option value="//api/name/originalContentURL">originalContentURL</option>
+		
+		<option value="//api/name/request">request</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/callErrorBlockWithError:">- callErrorBlockWithError:</option>
+		
+		<option value="//api/name/cancelRequestPlayInfo">- cancelRequestPlayInfo</option>
+		
+		<option value="//api/name/initWithUserId:andVideoId:key:">- initWithUserId:andVideoId:key:</option>
+		
+		<option value="//api/name/initWithUserId:key:">- initWithUserId:key:</option>
+		
+		<option value="//api/name/prepareToPlay">- prepareToPlay</option>
+		
+		<option value="//api/name/startRequestPlayInfo">- startRequestPlayInfo</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">DWMoviePlayerController Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>MPMoviePlayerController</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>DWMoviePlayerController.h<br />DWMoviePlayerController.m</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						<h2 class="task-title">Other Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/failBlock" title="failBlock"></a>
+	<h3 class="method-title"><code><a href="#//api/name/failBlock">&nbsp;&nbsp;failBlock</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取视频播放信息或播放过程中发生错误或失败时，回调该block。可以在该block内更新UI，如更改视频播放状态。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) DWErrorBlock failBlock</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">DWMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/drmServerPort" title="drmServerPort"></a>
+	<h3 class="method-title"><code><a href="#//api/name/drmServerPort">&nbsp;&nbsp;drmServerPort</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>drmServer 绑定的端口。</p>
+
+<p>若你使用了DRM视频加密播放服务，则必须先启动 DWDrmServer，并在调用 <a href="#//api/name/prepareToPlay">prepareToPlay</a> 之前，设置 drmServerPort 设置为 DWDrmServer 绑定的端口。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) UInt16 drmServerPort</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">DWMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/originalContentURL" title="originalContentURL"></a>
+	<h3 class="method-title"><code><a href="#//api/name/originalContentURL">&nbsp;&nbsp;originalContentURL</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>正在使用的 contentURL。</p>
+
+<p>若播放url的扩展名为pcm，则 originalContentURL为： <a href="http://127.0.0.1:xxx/pcm?url=urlEncode(currentContentURl">http://127.0.0.1:xxx/pcm?url=urlEncode(currentContentURl)</a>)， 否则 originalContentURL 同 contentURL。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) NSURL *originalContentURL</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">DWMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithUserId:andVideoId:key:" title="initWithUserId:andVideoId:key:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithUserId:andVideoId:key:">&ndash;&nbsp;initWithUserId:andVideoId:key:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>初始化播放对象</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)initWithUserId:(NSString *)<em>userId</em> andVideoId:(NSString *)<em>videoId</em> key:(NSString *)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>userId</code></th>
+						<td><p>用户ID，不能为nil</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>videoId</code></th>
+						<td><p>即将播放的视频ID，不能为nill</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>用户秘钥，不能为nil</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>播放对象</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">DWMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithUserId:key:" title="initWithUserId:key:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithUserId:key:">&ndash;&nbsp;initWithUserId:key:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>初始化播放对象</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)initWithUserId:(NSString *)<em>userId</em> key:(NSString *)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>userId</code></th>
+						<td><p>用户ID，不能为nil</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>用户秘钥，不能为nil</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>播放对象</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">DWMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startRequestPlayInfo" title="startRequestPlayInfo"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startRequestPlayInfo">&ndash;&nbsp;startRequestPlayInfo</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开始请求视频播放信息。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)startRequestPlayInfo</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">DWMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/cancelRequestPlayInfo" title="cancelRequestPlayInfo"></a>
+	<h3 class="method-title"><code><a href="#//api/name/cancelRequestPlayInfo">&ndash;&nbsp;cancelRequestPlayInfo</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>取消请求视频播放信息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)cancelRequestPlayInfo</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">DWMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						
+						<h2 class="task-title">Other Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/callErrorBlockWithError:" title="callErrorBlockWithError:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/callErrorBlockWithError:">&ndash;&nbsp;callErrorBlockWithError:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>response 形如：</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)callErrorBlockWithError:(NSError *)<em>error</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>response 形如：</p>
+
+<p>{
+&ldquo;result&rdquo;: 1,
+&ldquo;UPID&rdquo;: &ldquo;4109151396450044835&rdquo;,
+&ldquo;video&rdquo;: {
+&ldquo;status&rdquo;: 0,
+&ldquo;statusinfo&rdquo;: &ldquo;正常&rdquo;,
+&ldquo;title&rdquo;: &ldquo;步步高音乐手机广告&rdquo;,
+&ldquo;shareurl&rdquo;: &ldquo;&rdquo;,
+&ldquo;defaultquality&rdquo;: 10
+},
+&ldquo;qualities&rdquo;: [{
+&ldquo;quality&rdquo;: 10,
+&ldquo;desp&rdquo;: &ldquo;清晰&rdquo;,
+&ldquo;copies&rdquo;: [{
+&ldquo;playurl&rdquo;: &ldquo;<a href="http://bm2.33.play.bokecc.com/flvs/ca/Qxc52/uolaj09ZUD-10.mp4?t=1396457244&amp;key=7A9DEB2C7BEFC4EFC4046CC666040054">http://bm2.33.play.bokecc.com/flvs/ca/Qxc52/uolaj09ZUD-10.mp4?t=1396457244&amp;key=7A9DEB2C7BEFC4EFC4046CC666040054</a>&rdquo;,
+&ldquo;priority&rdquo;: 100
+}, {
+&ldquo;playurl&rdquo;: &ldquo;<a href="http://cm22.c110.play.bokecc.com/flvs/ca/Qxc52/uolaj09ZUD-10.mp4?t=1396457244&amp;key=7A9DEB2C7BEFC4EFC4046CC666040054">http://cm22.c110.play.bokecc.com/flvs/ca/Qxc52/uolaj09ZUD-10.mp4?t=1396457244&amp;key=7A9DEB2C7BEFC4EFC4046CC666040054</a>&rdquo;,
+&ldquo;priority&rdquo;: 99
+}]
+}]
+}</p>
+
+<p>解析后的结果存放到 self.playUrls，形如：</p>
+
+<p>{
+&ldquo;status&rdquo;: 0,
+&ldquo;statusinfo&rdquo;: &ldquo;正常&rdquo;,
+&ldquo;defaultquality&rdquo;: 10
+&ldquo;qualityDescription&rdquo;: [@&ldquo;清晰&rdquo;]
+&ldquo;qualities&rdquo;: [{
+&ldquo;quality&rdquo;: 10,
+&ldquo;desp&rdquo;: &ldquo;清晰&rdquo;,
+&ldquo;playurl&rdquo;: &ldquo;<a href="http://bm2.33.play.bokecc.com/flvs/ca/Qxc52/uolaj09ZUD-10.mp4?t=1396457244&amp;key=7A9DEB2C7BEFC4EFC4046CC666040054&amp;upid=4109151396450044835">http://bm2.33.play.bokecc.com/flvs/ca/Qxc52/uolaj09ZUD-10.mp4?t=1396457244&amp;key=7A9DEB2C7BEFC4EFC4046CC666040054&amp;upid=4109151396450044835</a>&rdquo;
+}]
+}</p>
+
+<p>解析原则：
+1. 将 UPID 拼接到 playurl 的后面
+2. 如果 qualities 中没有 defaultquality，则设置 defaultquality 改为 qualities 中最小的 quality。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">DWMoviePlayerController.m</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/prepareToPlay" title="prepareToPlay"></a>
+	<h3 class="method-title"><code><a href="#//api/name/prepareToPlay">&ndash;&nbsp;prepareToPlay</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>重写 prepareToPlay 方法，若url扩展名为 pcm，则修改 contentURL 为 <a href="http://127.0.0.1:drmServerPort/pcm?url=urlEncode(originalContentURL">http://127.0.0.1:drmServerPort/pcm?url=urlEncode(originalContentURL)</a>)，否则不修改。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)prepareToPlay</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>重写 prepareToPlay 方法，若url扩展名为 pcm，则修改 contentURL 为 <a href="http://127.0.0.1:drmServerPort/pcm?url=urlEncode(originalContentURL">http://127.0.0.1:drmServerPort/pcm?url=urlEncode(originalContentURL)</a>)，否则不修改。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">DWMoviePlayerController.m</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Extension Methods" name="task_Extension Methods"></a>
+						<h2 class="task-title">Extension Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/request" title="request"></a>
+	<h3 class="method-title"><code><a href="#//api/name/request">&nbsp;&nbsp;request</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用于请求视频播放信息。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) DWHTTPRequest *request</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>用于请求视频播放信息。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">DWMoviePlayerController.m</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2015 cc. All rights reserved. Updated: 2015-11-10</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
