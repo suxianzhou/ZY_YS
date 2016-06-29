@@ -8,13 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+/*
+ "title": "【临床】妇产科",
+ "teacher": "张远方",
+ "pic": "http://www.zhongyuedu.com/app/images/yy_jz.png",
+ "videoid": "2FD815DA18613F809C33DC5901307461",
+ "num": 7733,
+ "yid": 160528
+ */
+
 @interface RWClassListModel : NSObject
 
 @property (nonatomic,strong)NSString *title;
 
 @property (nonatomic,strong)NSString *teacher;
-
-@property (nonatomic,strong)NSString *date;
 
 @property (nonatomic,strong)NSString *pic;
 
@@ -22,10 +29,6 @@
 
 @property (nonatomic,strong)NSNumber *yid;
 
-@property (nonatomic,strong)NSString *wechat;
-
-@property (nonatomic,strong)NSString *phonenumber;
-
-@property (nonatomic,strong)NSString *name;
+@property (nonatomic,strong)NSString *videoid;
 
 @end

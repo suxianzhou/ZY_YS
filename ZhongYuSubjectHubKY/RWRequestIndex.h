@@ -23,7 +23,7 @@
 //>> 资讯
 #define SERVERS_INDEX @"http://www.zhongyuedu.com/api/tk_examType_encrypted.php"
 //>> 题库目录
-#define YY_INDEX @"http://www.zhongyuedu.com/api/yy_yx_list.php"
+#define YY_INDEX @"http://www.zhongyuedu.com/api/tk/yx/yy_yx_new_list.php"
 //>> 预约列表
 #define RECOMMEND @"http://www.zhongyuedu.com/api/tuijian.php"
 //>> 推荐列表

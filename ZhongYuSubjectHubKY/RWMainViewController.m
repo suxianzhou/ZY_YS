@@ -120,8 +120,6 @@
     
     MAIN_NAV
     
-    [RWRequsetManager obtainExperienceTimes];
-    
     [self initManagersAndDatas];
     
     [self initBar];
