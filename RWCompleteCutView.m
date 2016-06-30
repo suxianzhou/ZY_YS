@@ -175,9 +175,19 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
 
 @property (nonatomic,assign)CGFloat angles;
 
+@property (nonatomic,assign)CGFloat centerX;
+
+@property (nonatomic,assign)CGFloat centerY;
+
+@property (nonatomic,assign)CGFloat x;
+
+@property (nonatomic,assign)CGFloat y;
+
 @end
 
 @implementation RWCompleteCutViewCell
+
+@synthesize angles,centerX,centerY,x,y;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -185,9 +195,13 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
     
     if (self)
     {
-        [self initViews];
-        [self setDefaultValueWithView];
+        if (!_numberLabel)
+        {
+            [self initViews];
+        }
+        
         [self autoLayoutViews];
+        [self setDefaultValueWithView];
     }
     
     return self;
@@ -308,8 +322,45 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
     _numberLabel.text = _number;
 }
 
+- (void)didInThisView
+{
+    RWCardContentView *translucentView = _contentViews[RWContentViewOfTranslucent];
+    
+    RWCardContentView *mainView = _contentViews[RWContentViewOfMain];
+    
+    [UIView animateWithDuration:0.05f animations:^{
+        
+        CGAffineTransform transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, 0.02f);
+        
+        mainView.transform = transform;
+        
+    } completion:^(BOOL finished) {
+        
+        angles = 0;
+        
+        CGAffineTransform transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, angles);
+        
+        translucentView.transform = transform;
+        
+        [UIView animateWithDuration:0.2f animations:^{
+            
+            mainView.transform = transform;
+        }];
+    }];
+
+}
+
 - (void)revolveViewsWithPanGesture:(UIPanGestureRecognizer *)panGesture
 {
+    if (!x && !y && !centerX && !centerY)
+    {
+        centerX = panGesture.view.center.x;
+        centerY = panGesture.view.center.y;
+        
+        x = centerX;
+        y = panGesture.view.bounds.size.height * 2;
+    }
+    
     CGPoint distance = [panGesture translationInView:self];
     
     RWCardContentView *translucentView = _contentViews[RWContentViewOfTranslucent];
@@ -318,12 +369,6 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
     
     panGesture.view.transform = CGAffineTransformIdentity;
     translucentView.transform = CGAffineTransformIdentity;
-    
-    CGFloat centerX = panGesture.view.center.x;
-    CGFloat centerY = panGesture.view.center.y;
-    
-    CGFloat x = centerX;
-    CGFloat y = panGesture.view.bounds.size.height * 2;
     
     if (_contentDatas.count == 1 && distance.x < 0.0f)
     {
@@ -336,9 +381,9 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
         
         panGesture.view.transform = transform;
         
-        _angles = 0;
+        angles = 0;
         
-        transform = GetCGAffineTransformRotateAroundPoint(centerX,centerY,x,y,_angles);
+        transform = GetCGAffineTransformRotateAroundPoint(centerX,centerY,x,y,angles);
         
         translucentView.transform = transform;
         
@@ -353,13 +398,13 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
         return;
     }
     
-    _angles += [self revolveAngleWithDistance:distance.x];
+    angles += [self revolveAngleWithDistance:distance.x];
     
-    CGAffineTransform transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, _angles);
+    CGAffineTransform transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, angles);
     
-    CGAffineTransform transformLucent = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, _angles / 4);
+    CGAffineTransform transformLucent = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, angles / 4);
     
-    if (_angles <= 0)
+    if (angles <= 0)
     {
         panGesture.view.transform = transform;
         
@@ -373,7 +418,7 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
     
     if (panGesture.state == UIGestureRecognizerStateEnded)
     {
-        if (_angles < -0.15f)
+        if (angles < -0.15f)
         {
             __block CGAffineTransform transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, -0.5);
             
@@ -382,33 +427,13 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
                 panGesture.view.transform = transform;
                 
             } completion:^(BOOL finished) {
-               
+                
                 self.userInteractionEnabled = NO;
                 
                 [_delegate revolveDidChangeViewWithState:RWChangeViewStateToNextView];
-                
-                [UIView animateWithDuration:0.05f animations:^{
-                    
-                    transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, 0.02f);
-                    
-                    panGesture.view.transform = transform;
-                    
-                } completion:^(BOOL finished) {
-                    
-                    _angles = 0;
-                    
-                    transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, _angles);
-                    
-                    translucentView.transform = transform;
-
-                    [UIView animateWithDuration:0.2f animations:^{
-                       
-                        panGesture.view.transform = transform;
-                    }];
-                }];
             }];
         }
-        else if (_angles > 0.15f)
+        else if (angles > 0.15f)
         {
             if (_indexPath.row == 0)
             {
@@ -419,14 +444,14 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
             
             panGesture.view.transform = transform;
             
-            _angles = 0;
+            angles = 0;
             
-            transform = GetCGAffineTransformRotateAroundPoint(centerX,centerY,x,y,_angles);
+            transform = GetCGAffineTransformRotateAroundPoint(centerX,centerY,x,y,angles);
             
             translucentView.transform = transform;
             
             [UIView animateWithDuration:0.2f animations:^{
-
+                
                 panGesture.view.transform = transform;
             }];
             
@@ -437,9 +462,9 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
         {
             [UIView animateWithDuration:0.3f animations:^{
                 
-                _angles = 0;
+                angles = 0;
                 
-                CGAffineTransform transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, _angles);
+                CGAffineTransform transform = GetCGAffineTransformRotateAroundPoint(centerX, centerY, x, y, angles);
                 
                 panGesture.view.transform = transform;
                 translucentView.transform = transform;
@@ -493,7 +518,7 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    _angles = 0.0f;
+    angles = 0.0f;
     
     return YES;
 }
@@ -687,6 +712,8 @@ static NSString *const cutCell = @"cutCell";
                                                       (int)_viewSource.count];
     cell.contentDatas = _viewSource[indexPath.row];
     cell.delegate = self;
+    
+    [cell didInThisView];
     
     return cell;
 }

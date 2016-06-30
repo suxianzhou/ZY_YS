@@ -221,7 +221,6 @@
 		1263F6B01CDB34E00089EC9F /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1263F6AF1CDB34E00089EC9F /* JavaScriptCore.framework */; };
 		1263F6B21CDB34F70089EC9F /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1263F6B11CDB34F70089EC9F /* libstdc++.tbd */; };
 		1268F1B91CE0482D0040AB2F /* RWClassListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1268F1B81CE0482D0040AB2F /* RWClassListModel.m */; };
-		1269C9921D23A64C0012D85F /* RWCompleteCutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1269C9911D23A64C0012D85F /* RWCompleteCutView.m */; };
 		127154A41D23ACFB00F24FF9 /* DWCustomPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1271549B1D23ACFB00F24FF9 /* DWCustomPlayerViewController.m */; };
 		127154A51D23ACFB00F24FF9 /* DWMediaSubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1271549D1D23ACFB00F24FF9 /* DWMediaSubtitle.m */; };
 		127154A61D23ACFB00F24FF9 /* DWPlayerMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1271549F1D23ACFB00F24FF9 /* DWPlayerMenuView.m */; };
@@ -421,6 +420,7 @@
 		12F4461D1D129A1C00511336 /* Lv8.png in Resources */ = {isa = PBXBuildFile; fileRef = 12F446131D129A1C00511336 /* Lv8.png */; };
 		12F4461E1D129A1C00511336 /* Lv9.png in Resources */ = {isa = PBXBuildFile; fileRef = 12F446141D129A1C00511336 /* Lv9.png */; };
 		12F446221D12AE4A00511336 /* edit_t.png in Resources */ = {isa = PBXBuildFile; fileRef = 12F446211D12AE4A00511336 /* edit_t.png */; };
+		12F45C711D24A476001A7990 /* RWCompleteCutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F45C701D24A476001A7990 /* RWCompleteCutView.m */; };
 		12F5671E1D07D6E30059E20F /* RWSubjectCatalogueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F5671D1D07D6E30059E20F /* RWSubjectCatalogueController.m */; };
 		12F6EB301CD9FA1900CBA632 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F6EB2F1CD9FA1900CBA632 /* WebKit.framework */; };
 		12F6EB331CD9FA3E00CBA632 /* RWWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F6EB321CD9FA3E00CBA632 /* RWWebViewController.m */; };
@@ -939,8 +939,6 @@
 		1263F6B11CDB34F70089EC9F /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		1268F1B71CE0482D0040AB2F /* RWClassListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWClassListModel.h; sourceTree = "<group>"; };
 		1268F1B81CE0482D0040AB2F /* RWClassListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWClassListModel.m; sourceTree = "<group>"; };
-		1269C9901D23A64C0012D85F /* RWCompleteCutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWCompleteCutView.h; sourceTree = "<group>"; };
-		1269C9911D23A64C0012D85F /* RWCompleteCutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWCompleteCutView.m; sourceTree = "<group>"; };
 		1271549A1D23ACFB00F24FF9 /* DWCustomPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCustomPlayerViewController.h; sourceTree = "<group>"; };
 		1271549B1D23ACFB00F24FF9 /* DWCustomPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCustomPlayerViewController.m; sourceTree = "<group>"; };
 		1271549C1D23ACFB00F24FF9 /* DWMediaSubtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMediaSubtitle.h; sourceTree = "<group>"; };
@@ -1183,6 +1181,8 @@
 		12F446131D129A1C00511336 /* Lv8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lv8.png; sourceTree = "<group>"; };
 		12F446141D129A1C00511336 /* Lv9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lv9.png; sourceTree = "<group>"; };
 		12F446211D12AE4A00511336 /* edit_t.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_t.png; sourceTree = "<group>"; };
+		12F45C6F1D24A476001A7990 /* RWCompleteCutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWCompleteCutView.h; sourceTree = "<group>"; };
+		12F45C701D24A476001A7990 /* RWCompleteCutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWCompleteCutView.m; sourceTree = "<group>"; };
 		12F5671C1D07D6E30059E20F /* RWSubjectCatalogueController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWSubjectCatalogueController.h; sourceTree = "<group>"; };
 		12F5671D1D07D6E30059E20F /* RWSubjectCatalogueController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWSubjectCatalogueController.m; sourceTree = "<group>"; };
 		12F5E2911D19160B004A303A /* RWRequestIndex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RWRequestIndex.h; sourceTree = "<group>"; };
@@ -1509,8 +1509,8 @@
 			children = (
 				1263F5C11CDB11F20089EC9F /* RWInformationViewController.h */,
 				1263F5C21CDB11F20089EC9F /* RWInformationViewController.m */,
-				1269C9901D23A64C0012D85F /* RWCompleteCutView.h */,
-				1269C9911D23A64C0012D85F /* RWCompleteCutView.m */,
+				12F45C6F1D24A476001A7990 /* RWCompleteCutView.h */,
+				12F45C701D24A476001A7990 /* RWCompleteCutView.m */,
 				1268F1B71CE0482D0040AB2F /* RWClassListModel.h */,
 				1268F1B81CE0482D0040AB2F /* RWClassListModel.m */,
 				127154991D23ACE000F24FF9 /* Video */,
@@ -3605,7 +3605,6 @@
 				12FFF09D1CCF18FF003F58E2 /* main.m in Sources */,
 				12EDD8381CE3372600C9FBB8 /* RWAlarmClockController.m in Sources */,
 				12F23BC01CE970170086A699 /* RWRecommendController.m in Sources */,
-				1269C9921D23A64C0012D85F /* RWCompleteCutView.m in Sources */,
 				1261693E1D10FAF70055438B /* UMComGridTableViewCell.m in Sources */,
 				BAF4EF621CD1B20500C3931B /* RWAnswerViewController.m in Sources */,
 				12DFC63D1D138D8F00C73FDF /* RWRegisterViewController.m in Sources */,
@@ -3719,6 +3718,7 @@
 				12FFF1331CCF3C63003F58E2 /* NSManagedObjectContext+MagicalSaves.m in Sources */,
 				12F814F81CE42E3400D6DEE9 /* RWClockPickView.m in Sources */,
 				BAF4EF681CD1B36900C3931B /* RWAnswerViewCell.m in Sources */,
+				12F45C711D24A476001A7990 /* RWCompleteCutView.m in Sources */,
 				BAF3C59B1CD49F4300D66B03 /* RWCollectsubject.m in Sources */,
 				126169171D10FAF70055438B /* UMComPhotoAlbumViewController.m in Sources */,
 				12F776641CF2B06100F3561A /* RWMainViewController+Drawer.m in Sources */,

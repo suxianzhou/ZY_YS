@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Masonry.h"
 
 @class RWCardContentView,RWCompleteCutViewCell,RWCardContentView;
 
@@ -56,6 +57,8 @@ typedef NS_ENUM(NSInteger,RWContentView)
 @property (nonatomic,strong)NSString *number;
 
 @property (nonatomic,strong)NSIndexPath *indexPath;
+
+- (void)didInThisView;
 
 @end
 
