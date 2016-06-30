@@ -197,16 +197,29 @@ typedef NSInteger DWPLayerScreenSizeMode;
             
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"友情提示" message:@"你已连接到 2G/3G/4G 网络,是否继续播放？" preferredStyle:UIAlertControllerStyleAlert];
             
-            UIAlertAction *registerAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController popViewControllerAnimated:YES];
             }];
             
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"播放" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                [self prepareToPlayVideo:YES];
+            UIAlertAction *playAction = [UIAlertAction actionWithTitle:@"播放" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                if (!self.playUrls || self.playUrls.count == 0) {
+                    [self loadPlayUrls];
+                    return;
+                }
+                
+                if (self.player.playbackState == MPMoviePlaybackStatePlaying) {
+                    // 暂停播放
+                    [self pause];
+                } else {
+                    // 继续播放
+                    [self resume];
+                }
+
             }];
-            
-            [alert addAction:registerAction];
             
             [alert addAction:cancelAction];
+            
+            [alert addAction:playAction];
             
             [self presentViewController:alert animated:YES completion:nil];
  
@@ -223,7 +236,18 @@ typedef NSInteger DWPLayerScreenSizeMode;
             
             [SVProgressHUD showInfoWithStatus:@"你已连接到wifi"];
             
-            [self.player play];
+            if (!self.playUrls || self.playUrls.count == 0) {
+                [self loadPlayUrls];
+                return;
+            }
+            
+            if (self.player.playbackState == MPMoviePlaybackStatePlaying) {
+                // 暂停播放
+                [self pause];
+            } else {
+                // 继续播放
+                [self resume];
+            }
 
         }
     }
