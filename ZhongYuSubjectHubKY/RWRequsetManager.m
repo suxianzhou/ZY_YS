@@ -279,14 +279,20 @@
             
             if (!sec)
             {
-                finish(NO);
+                if (finish)
+                {
+                    finish(NO);
+                }
                 
                 [self obtainBaseWith:url AndHub:hub DownLoadFinish:nil];
                 
                 return ;
             }
             
-            finish(YES);
+            if (finish)
+            {
+                finish(YES);
+            }
 
             [self analysisBase:base AndHubName:hub];
             

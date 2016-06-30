@@ -142,6 +142,9 @@ typedef NSInteger DWPLayerScreenSizeMode;
     
 // DEMO_DRM_CODE_}
     
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.tabBarController.tabBar.hidden = YES;
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
     [self doForceScreenRotate];
@@ -322,8 +325,7 @@ typedef NSInteger DWPLayerScreenSizeMode;
     // 显示 状态栏
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
-    // 显示 navigationController
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 # pragma mark - headerView

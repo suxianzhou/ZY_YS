@@ -99,9 +99,12 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
 
 - (void)setDefaultValueWithView
 {
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor clearColor];
     self.layer.cornerRadius = 5;
-    self.clipsToBounds = YES;
+    self.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.layer.shadowOpacity = 0.3;
+    self.layer.shadowRadius = 20;
+    self.layer.shadowOffset = CGSizeMake(0, -5);
     
     CGFloat fontSize = 16;
     
@@ -116,7 +119,7 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
     _responseBtn.clipsToBounds = YES;
     _responseBtn.backgroundColor = [UIColor blackColor];
     
-    [_responseBtn setTitle:@"立即参与" forState:UIControlStateNormal];
+    [_responseBtn setTitle:@"立即播放" forState:UIControlStateNormal];
     [_responseBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _responseBtn.titleLabel.font = [UIFont systemFontOfSize:fontSize];
     
@@ -124,9 +127,11 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
                      action:@selector(buttonDidClick)
            forControlEvents:UIControlEventTouchUpInside];
     
-    _footerLabel.text = @"RyeWhiskey";
+    _footerLabel.text = @"ZHONGYU · 中域";
     _footerLabel.textColor = [UIColor darkGrayColor];
-    _footerLabel.font = [UIFont systemFontOfSize:fontSize - 4];
+    _footerLabel.font = [UIFont fontWithName:@"STXingkai-SC-Bold"size:fontSize - 4];
+    _footerLabel.shadowOffset = CGSizeMake(0.5, 0.5);
+    _footerLabel.shadowColor = [UIColor goldColor];
     
     _footerLabel.textAlignment = NSTextAlignmentCenter;
 }
@@ -224,8 +229,8 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
     [_contentViews[RWContentViewOfBottom] mas_remakeConstraints:
      ^(MASConstraintMaker *make){
          
-         make.width.equalTo(@(main_w - 16));
-         make.height.equalTo(@(main_h - 16));
+         make.width.equalTo(@(main_w - 20));
+         make.height.equalTo(@(main_h - 20));
          make.centerX.equalTo(self.mas_centerX).offset(0);
          make.top.equalTo(self.mas_top).offset(main_m);
      }];
@@ -233,10 +238,10 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
     [_contentViews[RWContentViewOfTranslucent] mas_remakeConstraints:
      ^(MASConstraintMaker *make){
          
-         make.width.equalTo(@(main_w - 8));
-         make.height.equalTo(@(main_h - 8));
+         make.width.equalTo(@(main_w - 10));
+         make.height.equalTo(@(main_h - 10));
          make.centerX.equalTo(self.mas_centerX).offset(0);
-         make.top.equalTo(self.mas_top).offset(main_m + 8);
+         make.top.equalTo(self.mas_top).offset(main_m + 10);
      }];
     
     [_contentViews[RWContentViewOfMain] mas_remakeConstraints:
@@ -245,7 +250,7 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(CGFloat centerX, CGFloa
          make.width.equalTo(@(main_w));
          make.height.equalTo(@(main_h));
          make.centerX.equalTo(self.mas_centerX).offset(0);
-         make.top.equalTo(self.mas_top).offset(main_m + 16);
+         make.top.equalTo(self.mas_top).offset(main_m + 20);
      }];
     
     [_numberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -661,7 +666,7 @@ static NSString *const cutCell = @"cutCell";
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     flowLayout.minimumLineSpacing = 0;
     flowLayout.minimumInteritemSpacing = 0;
-    flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    flowLayout.sectionInset = UIEdgeInsetsMake(-20, 0, 0, 0);
     
     self = [super initWithFrame:CGRectMake(0, 0, 0, 0) collectionViewLayout:flowLayout];
     
@@ -693,7 +698,7 @@ static NSString *const cutCell = @"cutCell";
 
 - (void)didMoveToSuperview
 {
-    [self mas_remakeConstraints:_constraint];
+    [self mas_makeConstraints:_constraint];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

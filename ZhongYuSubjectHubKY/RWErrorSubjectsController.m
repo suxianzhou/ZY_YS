@@ -17,7 +17,8 @@
 <
     UITableViewDataSource,
     UITableViewDelegate,
-    RWRegisterNowViewDelegate
+    RWRegisterNowViewDelegate,
+    RWAnswerViewDelegate
 >
 
 @property (nonatomic,strong)NSArray *classHeader;
@@ -97,8 +98,6 @@ static NSString *const wrongListCell = @"wrongListCell";
 {
     MAIN_NAV
     
-    
-    
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
@@ -146,7 +145,7 @@ static NSString *const wrongListCell = @"wrongListCell";
     
     if (!_delegate)
     {
-        [self SegmentedHidden:NO];
+        [_managerController initSegmentedControlWithIndex:RWSegmentedOfErrorCount];
     }
     
     [self obtainCollectSource];
@@ -262,7 +261,7 @@ static NSString *const wrongListCell = @"wrongListCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self SegmentedHidden:YES];
+    [_managerController releaseSegmentedControl];
     
     NSArray *subjects = [[subjectsSource objectForKey:classHeader[indexPath.section]] objectForKey:wrongSource[indexPath.section][indexPath.row]];
     
@@ -272,16 +271,30 @@ static NSString *const wrongListCell = @"wrongListCell";
     
     answer.subjectSource = [NSMutableArray arrayWithArray:subjects];
     
-    if (self.delegate == nil)
+    answer.delegate = self;
+    
+    if (_delegate == nil)
     {
         answer.displayType = RWDisplayTypeWrongSubject;
     }
     else
     {
-        answer.displayType = [self.delegate CollectSubject];
+        answer.displayType = [_delegate CollectSubject];
     }
     
     [self.navigationController pushViewController:answer animated:YES];
+}
+
+- (NSString *)itemButtonString
+{
+    if (!_delegate)
+    {
+        return @"清除记录";
+    }
+    else
+    {
+        return @"取消收藏";
+    }
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
@@ -303,26 +316,9 @@ static NSString *const wrongListCell = @"wrongListCell";
     [self obtainCollectSource];
 }
 
-- (void)SegmentedHidden:(BOOL)hidden
-{
-    NSArray *viewControllers = self.navigationController.viewControllers;
-    
-    RWSubjectCatalogueController *subjectCatalogue =
-                                        viewControllers[viewControllers.count - 2];
-    
-    if (hidden)
-    {
-        [subjectCatalogue releaseSegmentedControl];
-    }
-    else
-    {
-        [subjectCatalogue initSegmentedControl];
-    }
-}
-
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.delegate == nil)
+    if (!_delegate)
     {
         return @"清除记录";
     }

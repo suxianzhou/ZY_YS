@@ -318,6 +318,10 @@
 		1271556E1D23B47300F24FF9 /* upload-status-finish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127155341D23B47300F24FF9 /* upload-status-finish@2x.png */; };
 		1271556F1D23B47300F24FF9 /* upload-status-uploading.png in Resources */ = {isa = PBXBuildFile; fileRef = 127155351D23B47300F24FF9 /* upload-status-uploading.png */; };
 		127155701D23B47300F24FF9 /* upload-status-uploading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 127155361D23B47300F24FF9 /* upload-status-uploading@2x.png */; };
+		127B75BD1D24D46B00B5E8B0 /* RWSubjectManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 127B75BC1D24D46B00B5E8B0 /* RWSubjectManagerController.m */; };
+		127B75C01D24D4A800B5E8B0 /* RWRandomSubjectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 127B75BF1D24D4A800B5E8B0 /* RWRandomSubjectController.m */; };
+		127B75C31D24D55400B5E8B0 /* RWCatalogueBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 127B75C21D24D55400B5E8B0 /* RWCatalogueBaseController.m */; };
+		127B75C61D24F92500B5E8B0 /* RWSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 127B75C51D24F92500B5E8B0 /* RWSliderCell.m */; };
 		128F40C41CFBEAE70095F69B /* GGWelcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 128F40C31CFBEAE70095F69B /* GGWelcome.png */; };
 		129724471D139EA10095D209 /* RWAboutLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1297243E1D139EA10095D209 /* RWAboutLoginViewController.m */; };
 		129724481D139EA10095D209 /* RWForGotPWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 129724401D139EA10095D209 /* RWForGotPWViewController.m */; };
@@ -1047,6 +1051,14 @@
 		127155341D23B47300F24FF9 /* upload-status-finish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload-status-finish@2x.png"; sourceTree = "<group>"; };
 		127155351D23B47300F24FF9 /* upload-status-uploading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload-status-uploading.png"; sourceTree = "<group>"; };
 		127155361D23B47300F24FF9 /* upload-status-uploading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload-status-uploading@2x.png"; sourceTree = "<group>"; };
+		127B75BB1D24D46B00B5E8B0 /* RWSubjectManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWSubjectManagerController.h; sourceTree = "<group>"; };
+		127B75BC1D24D46B00B5E8B0 /* RWSubjectManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWSubjectManagerController.m; sourceTree = "<group>"; };
+		127B75BE1D24D4A800B5E8B0 /* RWRandomSubjectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWRandomSubjectController.h; sourceTree = "<group>"; };
+		127B75BF1D24D4A800B5E8B0 /* RWRandomSubjectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWRandomSubjectController.m; sourceTree = "<group>"; };
+		127B75C11D24D55400B5E8B0 /* RWCatalogueBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWCatalogueBaseController.h; sourceTree = "<group>"; };
+		127B75C21D24D55400B5E8B0 /* RWCatalogueBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWCatalogueBaseController.m; sourceTree = "<group>"; };
+		127B75C41D24F92500B5E8B0 /* RWSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWSliderCell.h; sourceTree = "<group>"; };
+		127B75C51D24F92500B5E8B0 /* RWSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWSliderCell.m; sourceTree = "<group>"; };
 		128F40C31CFBEAE70095F69B /* GGWelcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GGWelcome.png; sourceTree = "<group>"; };
 		1297243D1D139EA10095D209 /* RWAboutLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWAboutLoginViewController.h; sourceTree = "<group>"; };
 		1297243E1D139EA10095D209 /* RWAboutLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWAboutLoginViewController.m; sourceTree = "<group>"; };
@@ -2669,6 +2681,8 @@
 			children = (
 				12BCD7E71D0EA93B008DA5DC /* RWProgressCell.h */,
 				12BCD7E81D0EA93B008DA5DC /* RWProgressCell.m */,
+				127B75C41D24F92500B5E8B0 /* RWSliderCell.h */,
+				127B75C51D24F92500B5E8B0 /* RWSliderCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -2824,14 +2838,20 @@
 		12F567181D07D06C0059E20F /* SubjectView */ = {
 			isa = PBXGroup;
 			children = (
+				127B75BB1D24D46B00B5E8B0 /* RWSubjectManagerController.h */,
+				127B75BC1D24D46B00B5E8B0 /* RWSubjectManagerController.m */,
+				127B75C11D24D55400B5E8B0 /* RWCatalogueBaseController.h */,
+				127B75C21D24D55400B5E8B0 /* RWCatalogueBaseController.m */,
+				127B75BE1D24D4A800B5E8B0 /* RWRandomSubjectController.h */,
+				127B75BF1D24D4A800B5E8B0 /* RWRandomSubjectController.m */,
 				12F5671C1D07D6E30059E20F /* RWSubjectCatalogueController.h */,
 				12F5671D1D07D6E30059E20F /* RWSubjectCatalogueController.m */,
+				12FFF0B81CCF1A3A003F58E2 /* RWErrorSubjectsController.h */,
+				12FFF0B91CCF1A3A003F58E2 /* RWErrorSubjectsController.m */,
 				125D996E1CD0B46800871ED4 /* RWChooseSubViewController.h */,
 				125D996F1CD0B46800871ED4 /* RWChooseSubViewController.m */,
 				BAF4EF601CD1B20500C3931B /* RWAnswerViewController.h */,
 				BAF4EF611CD1B20500C3931B /* RWAnswerViewController.m */,
-				12FFF0B81CCF1A3A003F58E2 /* RWErrorSubjectsController.h */,
-				12FFF0B91CCF1A3A003F58E2 /* RWErrorSubjectsController.m */,
 				12BCD7EA1D0EE7E2008DA5DC /* View */,
 			);
 			name = SubjectView;
@@ -3532,6 +3552,7 @@
 				BAF4EF9A1CD20DDD00C3931B /* RWSubjectHubClass+CoreDataProperties.m in Sources */,
 				12F776671CF2B68300F3561A /* RWDrawerView.m in Sources */,
 				12FFF12E1CCF3C63003F58E2 /* NSManagedObject+MagicalRecord.m in Sources */,
+				127B75C61D24F92500B5E8B0 /* RWSliderCell.m in Sources */,
 				1261696F1D10FAF70055438B /* UMComReplyEditViewController.m in Sources */,
 				126169221D10FAF70055438B /* UMComCommentEditView.m in Sources */,
 				129B656B1CD9DF4C007A7224 /* RWBanners.m in Sources */,
@@ -3639,6 +3660,7 @@
 				1261697A1D10FAF70055438B /* UMComSysCommonTableViewCell.m in Sources */,
 				12DFC6451D138E5200C73FDF /* RWLoginTableViewCell.m in Sources */,
 				127154A61D23ACFB00F24FF9 /* DWPlayerMenuView.m in Sources */,
+				127B75BD1D24D46B00B5E8B0 /* RWSubjectManagerController.m in Sources */,
 				12FFF1301CCF3C63003F58E2 /* NSManagedObjectContext+MagicalChainSave.m in Sources */,
 				12FFF1311CCF3C63003F58E2 /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				1261698B1D10FAF70055438B /* UMComConfigFile.m in Sources */,
@@ -3678,6 +3700,7 @@
 				1261693F1D10FAF70055438B /* UMComGridTableViewCellOne.m in Sources */,
 				127154A41D23ACFB00F24FF9 /* DWCustomPlayerViewController.m in Sources */,
 				12EE61BC1CE1762A00ADCC51 /* RWDeployManager.m in Sources */,
+				127B75C31D24D55400B5E8B0 /* RWCatalogueBaseController.m in Sources */,
 				126169771D10FAF70055438B /* UMComPrivateLetterTableViewController.m in Sources */,
 				1261694B1D10FAF70055438B /* UMComUserInfoBar.m in Sources */,
 				12FFF1261CCF3C63003F58E2 /* NSEntityDescription+MagicalDataImport.m in Sources */,
@@ -3688,6 +3711,7 @@
 				12EE61C01CE181AD00ADCC51 /* NSData+Base64.m in Sources */,
 				126169471D10FAF70055438B /* UMComDiscoverViewController.m in Sources */,
 				12BCD7E91D0EA93B008DA5DC /* RWProgressCell.m in Sources */,
+				127B75C01D24D4A800B5E8B0 /* RWRandomSubjectController.m in Sources */,
 				126169371D10FAF70055438B /* UMImagePickerController.m in Sources */,
 				BAF3C5971CD49F4300D66B03 /* RWCollectHub.m in Sources */,
 				12FFF13A1CCF3C63003F58E2 /* MagicalRecord+iCloud.m in Sources */,
