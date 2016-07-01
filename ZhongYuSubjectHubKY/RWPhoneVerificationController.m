@@ -341,17 +341,11 @@ static NSString *const buttonCell = @"buttonCell";
         UILabel *titleLabel = [[UILabel alloc]init];
         
         titleLabel.text = @"ZHONGYU · 中域";
-        
         titleLabel.numberOfLines = 0;
-        
         titleLabel.textAlignment = NSTextAlignmentCenter;
-        
         titleLabel.font = [UIFont fontWithName:@"STXingkai-SC-Bold"size:30];
-        
         titleLabel.textColor = [UIColor blackColor];
-        
         titleLabel.shadowOffset = CGSizeMake(1, 1);
-        
         titleLabel.shadowColor = [UIColor goldColor];
         
         [backView addSubview:titleLabel];
@@ -369,16 +363,17 @@ static NSString *const buttonCell = @"buttonCell";
     
     return nil;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section==1) {
-    
-        
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section==1)
+    {
         return  self.view.frame.size.height*0.35;
     }
     
     return 0;
-    
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     
     if(section==1)
@@ -406,13 +401,12 @@ static NSString *const buttonCell = @"buttonCell";
         return backView;
     }
     
-    
     return nil;
-    
 }
--(void)block:(UIButton *)Button{
+
+-(void)block:(UIButton *)Button
+{
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 /**
  *  注册
@@ -591,9 +585,7 @@ static NSString *const buttonCell = @"buttonCell";
     CATransition *transition = [CATransition animation];
     
     transition.type = @"rippleEffect";
-    
     transition.subtype = @"fromLeft";
-    
     transition.duration = 1;
     
     [self.view.layer addAnimation:transition forKey:nil];

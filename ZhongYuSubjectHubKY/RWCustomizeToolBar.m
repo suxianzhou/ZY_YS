@@ -266,3 +266,127 @@
 }
 
 @end
+
+@interface RWCustomizeWebToolBar ()
+
+@property (nonatomic,strong)UIImageView *goPrevious;
+
+@property (nonatomic,strong)UIImageView *index;
+
+@property (nonatomic,strong)UIImageView *shared;
+
+@property (nonatomic,assign)CGRect infoFrame;
+
+@end
+
+@implementation RWCustomizeWebToolBar
+
++ (instancetype)webBarWithFrame:(CGRect)frame
+{
+    RWCustomizeWebToolBar *webBar = [[RWCustomizeWebToolBar alloc] initWithFrame:frame];
+    
+    return webBar;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    
+    if (self)
+    {
+        self.backgroundColor = [UIColor whiteColor];
+        
+        [self initViews];
+        [self autoLayoutFrame];
+    }
+    
+    return self;
+}
+
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    
+    _infoFrame = frame;
+    [self autoLayoutFrame];
+}
+
+- (void)initViews
+{
+    if (_shared && _index && _goPrevious)
+    {
+        return;
+    }
+    
+    _goPrevious = [[UIImageView alloc] init];
+    _goPrevious.image = [UIImage imageNamed:@"Previos_un"];
+    _goPrevious.tag = 11111;
+    _goPrevious.userInteractionEnabled = YES;
+    
+    [self addSubview:_goPrevious];
+    
+    _index = [[UIImageView alloc] init];
+    _index.image = [UIImage imageNamed:@"goindex"];
+    _index.tag = 22222;
+    _index.userInteractionEnabled = YES;
+    
+    [self addSubview:_index];
+    
+    _shared = [[UIImageView alloc] init];
+    _shared.image = [UIImage imageNamed:@"UnShare"];
+    _shared.tag = 33333;
+    _shared.userInteractionEnabled = YES;
+    
+    [self addSubview:_shared];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(barButtonClickWithTap:)];
+    
+    tap.numberOfTapsRequired = 1;
+    
+    [_goPrevious addGestureRecognizer:tap];
+    
+    UITapGestureRecognizer *tapIndex = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(barButtonClickWithTap:)];
+    
+    tapIndex.numberOfTapsRequired = 1;
+    
+    [_index addGestureRecognizer:tapIndex];
+    
+    UITapGestureRecognizer *tapShared = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(barButtonClickWithTap:)];
+    
+    tapShared.numberOfTapsRequired = 1;
+    
+    [_shared addGestureRecognizer:tapShared];
+}
+
+- (void)autoLayoutFrame
+{
+    if ((_infoFrame.size.height == 0 && _infoFrame.size.width == 0) || !_goPrevious)
+    {
+        return;
+    }
+    
+    CGFloat w = _infoFrame.size.width;
+    CGFloat h = _infoFrame.size.height;
+    
+    CGRect frame = CGRectMake(0, 0, h - 10, h - 10);
+    
+    _goPrevious.frame = frame;
+    _index.frame = frame;
+    _shared.frame = frame;
+    
+    CGFloat itemCenter = w / 6;
+    
+    _goPrevious.center = CGPointMake(itemCenter, h / 2);
+    _index.center = CGPointMake(itemCenter * 3, h / 2);
+    _shared.center = CGPointMake(w - itemCenter, h / 2);
+}
+
+- (void)barButtonClickWithTap:(UITapGestureRecognizer *)tap
+{
+    if (_delegate)
+    {
+        [_delegate webToolBar:self didClickWithType:tap.view.tag];
+    }
+}
+
+@end

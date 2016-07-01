@@ -9,6 +9,7 @@
 #import "RWPhoneVerificationController.h"
 
 @interface RWAboutLoginViewController ()
+
 <
     UITableViewDelegate,
     UITableViewDataSource,
@@ -34,16 +35,13 @@
 
 @property (nonatomic,strong)UIView *contrast;
 
-
-
 @end
+
 static NSString *const textFileCell = @"textFileCell";
 
 static NSString *const buttonCell = @"buttonCell";
 
-
 @implementation RWAboutLoginViewController
-
 
 @synthesize viewList;
 @synthesize requestManager;
@@ -102,7 +100,7 @@ static NSString *const buttonCell = @"buttonCell";
     }
 }
 
-- (void) keyboardWasHidden:(NSNotification *) notif
+- (void)keyboardWasHidden:(NSNotification *) notif
 {
     [UIView animateWithDuration:0.3 animations:^{
         
@@ -124,24 +122,24 @@ static NSString *const buttonCell = @"buttonCell";
 
 - (void)requestError:(NSError *)error Task:(NSURLSessionDataTask *)task
 {
-    NSLog(@"%@",error.description);
+    [SVProgressHUD dismiss];
     
     [RWRequsetManager warningToViewController:self
                                         Title:@"网络连接失败，请检查网络"
-                                        Click:^{
-                                            
-                                        }];
+                                        Click:^
+    {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
 }
 
 - (void)obtainRequestManager
 {
-    
     if (!requestManager)
     {
         requestManager = [[RWRequsetManager alloc]init];
-        
-        requestManager.delegate = self;
     }
+    
+    requestManager.delegate = self;
 }
 
 - (void)addTapGesture
@@ -194,7 +192,6 @@ static NSString *const buttonCell = @"buttonCell";
     viewList.delegate = self;
     viewList.dataSource = self;
     
-    
     [viewList registerClass:[RWTextFiledCell class] forCellReuseIdentifier:textFileCell];
     
     [viewList registerClass:[RWButtonCell class] forCellReuseIdentifier:buttonCell];
@@ -204,6 +201,7 @@ static NSString *const buttonCell = @"buttonCell";
 {
     return 2;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 
 {
@@ -224,11 +222,9 @@ static NSString *const buttonCell = @"buttonCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     if (indexPath.section == 0)
     {
         RWTextFiledCell *cell = [tableView dequeueReusableCellWithIdentifier:textFileCell forIndexPath:indexPath];
-        
         
         cell.delegate = self;
         
@@ -261,11 +257,7 @@ static NSString *const buttonCell = @"buttonCell";
         return cell;
         
     }
-    
-    
-    
 }
-
 
 - (void)textFiledCell:(RWTextFiledCell *)cell DidBeginEditing:(NSString *)placeholder
 {
@@ -290,7 +282,6 @@ static NSString *const buttonCell = @"buttonCell";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    
     if (section == 0)
     {
         UIView *backView = [[UIView alloc]init];
@@ -298,19 +289,13 @@ static NSString *const buttonCell = @"buttonCell";
         backView.backgroundColor = [UIColor clearColor];
         
         UILabel *titleLabel = [[UILabel alloc]init];
-        
+
         titleLabel.text = @"ZHONGYU · 中域";
-        
         titleLabel.numberOfLines = 0;
-        
         titleLabel.textAlignment = NSTextAlignmentCenter;
-        
         titleLabel.font = [UIFont fontWithName:@"STXingkai-SC-Bold"size:30];
-        
         titleLabel.textColor = [UIColor blackColor];
-        
         titleLabel.shadowOffset = CGSizeMake(1, 1);
-        
         titleLabel.shadowColor = [UIColor goldColor];;
 
         [backView addSubview:titleLabel];
@@ -374,6 +359,7 @@ static NSString *const buttonCell = @"buttonCell";
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -413,43 +399,73 @@ static NSString *const buttonCell = @"buttonCell";
     
     NSString *secondPassWord=verCell.textFiled.text;
     
-    if ([firstPassWord isEqualToString:secondPassWord]) {
-        if ([requestManager verificationPassword:firstPassWord]) {
+    if ([firstPassWord isEqualToString:secondPassWord])
+    {
+        if ([requestManager verificationPassword:firstPassWord])
+        {
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
             
-            [requestManager registerWithUsername:_userPassword AndPassword:firstPassWord];
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+            
+            [SVProgressHUD show];
+            
+            [requestManager registerWithUsername:_userPassword
+                                     AndPassword:firstPassWord];
            
         }
-    }else{
-        [RWRequsetManager warningToViewController:self
-         
-                                            Title:@"两次输入不一致，请重新输入"
-         
-                                            Click:^{
-                                                
-                                                textCell.textFiled.text = nil;
-                                                verCell.textFiled.text=nil;
-                                                [textCell.textFiled
-                                                 becomeFirstResponder];
-                                            }];
+        else
+        {
+            [RWRequsetManager warningToViewController:self
+                                                Title:@"两次输入不一致，请重新输入"
+                                                Click:^
+             {
+                 textCell.textFiled.text = nil;
+                 verCell.textFiled.text=nil;
+                 [textCell.textFiled becomeFirstResponder];
+             }];
+        }
     }
-}
-- (void)registerResponds:(BOOL)isSuccessed ErrorReason:(NSString *)reason{
-    
-    if (isSuccessed) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }else{
-        
-        [RWRequsetManager warningToViewController:self Title:reason Click:^{
-            
+    else
+    {
+        [RWRequsetManager warningToViewController:self
+                                            Title:@"两次输入不一致，请重新输入"
+                                            Click:^
+        {
+            textCell.textFiled.text = nil;
+            verCell.textFiled.text=nil;
+            [textCell.textFiled becomeFirstResponder];
         }];
     }
 }
-- (void)dealloc {
+
+- (void)registerResponds:(BOOL)isSuccessed ErrorReason:(NSString *)reason{
     
-    [[NSNotificationCenter defaultCenter] removeObserver:UIKeyboardWillShowNotification name:nil object:self];
-    [[NSNotificationCenter defaultCenter ] removeObserver:UIKeyboardWillHideNotification name:nil object:self];
+    [SVProgressHUD dismiss];
+    
+    if (isSuccessed)
+    {
+        [RWRequsetManager warningToViewController:self
+                                            Title:@"注册成功"
+                                            Click:^
+         {
+             [self.navigationController popToRootViewControllerAnimated:YES];
+         }];
+    }
+    else
+    {
+        [RWRequsetManager warningToViewController:self
+                                            Title:reason
+                                            Click:^
+         {
+             [self.navigationController popViewControllerAnimated:YES];
+         }];
+    }
 }
 
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:UIKeyboardWillShowNotification name:nil object:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:UIKeyboardWillHideNotification name:nil object:self];
+}
 
 @end

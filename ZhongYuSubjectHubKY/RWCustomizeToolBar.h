@@ -42,3 +42,27 @@ typedef NS_OPTIONS(NSInteger, RWToolsBarClick)
 - (void)cancelWithBotton:(RWToolsBarClick)botton;
 
 @end
+
+typedef NS_ENUM(NSInteger,RWWebToolBarType)
+{
+    RWWebToolBarTypeOfPrevious = 11111,
+    RWWebToolBarTypeOfIndex    = 22222,
+    RWWebToolBarTypeOfShared   = 33333
+};
+
+@class RWCustomizeWebToolBar;
+
+@protocol RWCustomizeWebToolBarDelegate <NSObject>
+
+- (void)webToolBar:(RWCustomizeWebToolBar *)webToolBar
+  didClickWithType:(RWWebToolBarType)type;
+
+@end
+
+@interface RWCustomizeWebToolBar : UIView
+
++ (instancetype)webBarWithFrame:(CGRect)frame;
+
+@property (nonatomic,strong)id<RWCustomizeWebToolBarDelegate> delegate;
+
+@end

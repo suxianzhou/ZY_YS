@@ -35,7 +35,7 @@
 //>> push
 #define LOGIN_URL @"http://www.zhongyuedu.com/api/login.php"
 //>> 登录
-#define REGISTER_URL @"http://www.zhongyuedu.com/api/register.php.php"
+#define REGISTER_URL @"http://www.zhongyuedu.com/api/register.php"
 //>> 注册
 #define REPLACE_PASSWORD_URL @"http://www.zhongyuedu.com/api/change_pwd.php"
 //>> 重置密码
