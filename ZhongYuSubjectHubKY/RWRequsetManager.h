@@ -83,4 +83,6 @@
 
 + (void)warningToViewController:(__kindof UIViewController *)viewController Title:(NSString *)title Click:(void(^)(void))click;
 
++ (void)obtainExperienceTimes;
+
 @end

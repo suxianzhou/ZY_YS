@@ -34,7 +34,7 @@
         self.deployInformation = [deployManager obtainDeployInformation];
     }
     
-    if ([deployManager deployValueForKey:LOGIN] == nil)
+    if (![deployManager deployValueForKey:LOGIN])
     {
         [deployManager setDeployValue:NOT_LOGIN forKey:LOGIN];
     }
@@ -66,7 +66,7 @@
                                 options:NSKeyValueObservingOptionNew
                                 context:nil];
     
-    if ([self.deployInformation objectForKey:TEST_CLOCK] == nil)
+    if (![self.deployInformation objectForKey:TEST_CLOCK])
     {
         [deployManager setDeployValue:RWNOTFOUND forKey:TEST_CLOCK];
     }

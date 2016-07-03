@@ -10,6 +10,7 @@
 #import "RWRequsetManager+UserLogin.h"
 #import "RWDeployManager.h"
 #import "RWDataBaseManager.h"
+#import <AFNetworking.h>
 
 #define WAIT do {\\
                 [self expectationForNotification:@"RSBaseTest" object:nil handler:nil];\\
@@ -40,6 +41,35 @@
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+}
+
+- (void)testRequestreset
+{
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    session.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSDictionary *body = @{@"username":@"18562599337",@"password":@"qwertyu"};
+    
+    [session POST:REPLACE_PASSWORD_URL parameters:body progress:^(NSProgress * _Nonnull uploadProgress) {
+        nil;
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSDictionary *Json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"%@",Json);
+        NSLog(@"%d",(int)[[Json objectForKey:@"resultcode"] integerValue]);
+        
+        XCTAssertNotEqual([[Json objectForKey:@"resultcode"] integerValue], 0);
+        
+        CFRunLoopRef runLoopRef = CFRunLoopGetCurrent();
+        CFRunLoopStop(runLoopRef);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        CFRunLoopRef runLoopRef = CFRunLoopGetCurrent();
+        CFRunLoopStop(runLoopRef);
+    }];
+    
+    CFRunLoopRun();
 }
 
 //- (void)testNetworkState

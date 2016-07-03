@@ -72,8 +72,7 @@
     
     userAccount.usid = username;
     userAccount.name = username;
-    
-    ////登录之前先设置登录前的viewController，方便登录逻辑完成之后，跳转回来
+
     [UMComPushRequest loginWithCustomAccountForUser:userAccount completion:^(id responseObject, NSError *error) {
         
         NSLog(@"res = %@",responseObject);
@@ -121,7 +120,7 @@
 
 - (void)replacePasswordWithUsername:(NSString *)username AndPassword:(NSString *)password
 {
-    NSDictionary *body = @{@"username":username,@"password":password};
+    NSDictionary *body = @{@"username":username,@"password":password,@"yz":@(2802)};
     
     [self.manager POST:REPLACE_PASSWORD_URL parameters:body progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;
@@ -129,7 +128,7 @@
         
         NSDictionary *Json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         
-        if ([[Json objectForKey:@"resultCode"] integerValue] == 0)
+        if ([[Json objectForKey:@"resultcode"] integerValue] == 0)
         {
             [self.delegate replacePasswordResponds:YES ErrorReason:nil];
         }
