@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RWAnswerViewController.h"
+#import "RWSubjectManagerController.h"
 
 @protocol RWCollectSubjectDelegate <NSObject>
 
@@ -16,6 +17,8 @@
 @end
 
 @interface RWErrorSubjectsController : UIViewController
+
+@property (nonatomic,weak)RWSubjectManagerController *managerController;
 
 @property (nonatomic,assign)id<RWCollectSubjectDelegate> delegate;
 

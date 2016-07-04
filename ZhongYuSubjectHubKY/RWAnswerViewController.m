@@ -137,21 +137,19 @@ static NSString *const answerViewCell = @"answerViewCell";
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
-    NSString *title = @"清除记录";
-        
-    if (displayType == RWDisplayTypeCollect)
+    if (_delegate)
     {
-        title = @"取消收藏";
-    }
-    else if (displayType == RWDisplayTypeNormal)
-    {
-        title = @"重新答题";
-    }
+        NSString *title = [_delegate itemButtonString];
         
-    UIBarButtonItem *deleteBtn = [[UIBarButtonItem alloc]initWithTitle:title style:UIBarButtonItemStyleDone target:self action:@selector(deleteItem:)];
+        UIBarButtonItem *deleteBtn = [[UIBarButtonItem alloc]initWithTitle:title style:UIBarButtonItemStyleDone target:self action:@selector(deleteItem:)];
         
-    self.navigationItem.rightBarButtonItem = deleteBtn;
+        self.navigationItem.rightBarButtonItem = deleteBtn;
+    }
+}
 
+- (void)removeItemButton
+{
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)deleteItem:(UIBarButtonItem *)item

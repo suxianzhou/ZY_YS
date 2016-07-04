@@ -56,22 +56,7 @@
                                                     initWithvideoClassModel:
                                                             classSource[indexPath.row]];
     
-    self.hidesBottomBarWhenPushed = YES;
-    
     [self.navigationController pushViewController:player animated:YES];
-    
-    self.hidesBottomBarWhenPushed = NO;
-}
-
-- (void)initBar
-{
-    self.navigationItem.title = @"视频";
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    self.tabBarController.tabBar.translucent = NO;
-    self.navigationController.navigationBar.translucent = NO;
-    
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 #pragma mark - Life Cycle
@@ -94,11 +79,8 @@
     if (!classSource)
     {
         [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-        
         [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
-        
         [SVProgressHUD setFont:[UIFont systemFontOfSize:14]];
-        
         [SVProgressHUD showWithStatus:@"正在加载..."];
         
         [requsetManager obtainClassList];
@@ -143,11 +125,13 @@
     });
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    
     MAIN_NAV
-    [self initBar];
-    // Do any additional setup after loading the view.
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+
     [self initClassList];
 }
 

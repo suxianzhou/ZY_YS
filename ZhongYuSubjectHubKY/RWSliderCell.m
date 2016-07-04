@@ -1,18 +1,18 @@
 //
-//  RWProgressCell.m
+//  RWSliderCell.m
 //  ZhongYuSubjectHubKY
 //
-//  Created by zhongyu on 16/6/13.
+//  Created by zhongyu on 16/6/30.
 //  Copyright © 2016年 RyeWhiskey. All rights reserved.
 //
 
-#import "RWProgressCell.h"
+#import "RWSliderCell.h"
 
-@interface RWProgressCell()
+@interface RWSliderCell()
 
 @property (nonatomic,strong)UILabel *nameLabel;
 
-@property (nonatomic,strong)UIProgressView *progressView;
+@property (nonatomic,strong)UISlider *countSlider;
 
 @property (nonatomic,strong)UILabel *value;
 
@@ -20,10 +20,10 @@
 
 @end
 
-@implementation RWProgressCell
+@implementation RWSliderCell
 
 @synthesize nameLabel;
-@synthesize progressView;
+@synthesize countSlider;
 @synthesize value;
 @synthesize imageLogo;
 
@@ -46,22 +46,55 @@
     [self autoLayoutViews];
 }
 
+- (void)updateValues:(UISlider *)slider
+{
+    _counts = slider.value;
+    
+    [self setSubjectCountsWithValue:_counts];
+}
+
+- (void)updateValueEnd:(UISlider *)slider
+{
+    int remainder = (int)_counts % 10;
+    
+    if (remainder >= 5)
+    {
+        _counts = (float)((int)_counts / 10 * 10 + 10);
+    }
+    else
+    {
+        _counts = (float)((int)_counts / 10 * 10);
+    }
+    
+    slider.value = _counts;
+}
+
 - (void)initViews
 {
     nameLabel = [[UILabel alloc] init];
     
     [self addSubview:nameLabel];
     
-    progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+    countSlider = [[UISlider alloc] init];
+    countSlider.layer.cornerRadius = 2;
+    countSlider.clipsToBounds = YES;
+    countSlider.maximumValue = 100;
+    countSlider.minimumValue = 20;
     
-    progressView.layer.cornerRadius = 2;
+    countSlider.thumbTintColor = [UIColor blackColor];
+    countSlider.minimumTrackTintColor = MAIN_COLOR;
     
-    progressView.clipsToBounds = YES;
+    [countSlider addTarget:self
+                    action:@selector(updateValues:)
+          forControlEvents:UIControlEventValueChanged];
     
-    [self addSubview:progressView];
+    [countSlider addTarget:self
+                    action:@selector(updateValueEnd:)
+          forControlEvents:UIControlEventTouchUpInside];
+    
+    [self addSubview:countSlider];
     
     value = [[UILabel alloc] init];
-    
     value.font = [UIFont systemFontOfSize:14];
     value.textColor = [UIColor grayColor];
     
@@ -76,7 +109,7 @@
 - (void)autoLayoutViews
 {
     [imageLogo mas_makeConstraints:^(MASConstraintMaker *make) {
-       
+        
         make.width.equalTo(@(20));
         make.height.equalTo(@(23));
         make.right.equalTo(self.contentView.mas_right).offset(-10);
@@ -84,24 +117,24 @@
     }];
     
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-       
+        
         make.left.equalTo(self.mas_left).offset(30);
         make.right.equalTo(imageLogo.mas_left).offset(-10);
         make.top.equalTo(self.mas_top).offset(5);
         make.bottom.equalTo(self.mas_bottom).offset(-self.frame.size.height/2);
     }];
     
-    [progressView mas_makeConstraints:^(MASConstraintMaker *make) {
-       
+    [countSlider mas_makeConstraints:^(MASConstraintMaker *make) {
+        
         make.left.equalTo(self.mas_left).offset(30);
         make.right.equalTo(imageLogo.mas_left).offset(-80);
-        make.height.equalTo(@(4));
+        make.height.equalTo(@(30));
         make.centerY.equalTo(nameLabel.mas_centerY).offset(self.frame.size.height/2);
     }];
     
     [value mas_makeConstraints:^(MASConstraintMaker *make) {
-       
-        make.left.equalTo(progressView.mas_right).offset(10);
+        
+        make.left.equalTo(countSlider.mas_right).offset(10);
         make.top.equalTo(nameLabel.mas_bottom).offset(0);
         make.right.equalTo(imageLogo.mas_left).offset(-10);
         make.bottom.equalTo(self.mas_bottom).offset(0);
@@ -113,38 +146,29 @@
     _name = name;
     
     nameLabel.text = _name;
+    
+    _counts = 50.0f;
+    countSlider.value = _counts;
+    
+    [self setSubjectCountsWithValue:_counts];
 }
 
-- (void)setFraction:(NSString *)fraction
+- (void)setSubjectCountsWithValue:(float)changeValue
 {
-    _fraction = fraction;
+    int remainder = (int)changeValue % 10;
     
-    value.text = _fraction;
+    int changeCount;
     
-    [progressView setProgress:[self percentageWithString:_fraction] animated:YES];
-    
-    progressView.progressTintColor = [UIColor colorWithRed:84.0f/255.0f
-                                                     green:139.0f/255.0f
-                                                      blue:84.0f/255.0f
-                                                     alpha:1.0];
-}
-
-- (float)percentageWithString:(NSString *)string
-{
-    NSArray *arr = [string componentsSeparatedByString:@"/"];
-    
-    if (arr.count != 2)
+    if (remainder >= 5)
     {
-        return 0;
+        changeCount = (int)changeValue / 10 * 10 + 10;
+    }
+    else
+    {
+        changeCount = (int)changeValue / 10 * 10;
     }
     
-    return [arr[0] floatValue] / [arr[1] floatValue];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    value.text = [NSString stringWithFormat:@"%d题",changeCount];
 }
 
 @end

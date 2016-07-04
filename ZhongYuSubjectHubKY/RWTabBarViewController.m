@@ -10,7 +10,7 @@
 #import "RWMainViewController.h"
 #import "RWInformationViewController.h"
 #import "RWMoreViewController.h"
-#import "RWSubjectCatalogueController.h"
+#import "RWSubjectManagerController.h"
 #import "UMCommunity.h"
 
 @interface RWTabBarViewController ()
@@ -132,8 +132,8 @@
     
     UINavigationController *mainNav = [[UINavigationController alloc]initWithRootViewController:main];
     
-    RWSubjectCatalogueController *catalogue =
-                                        [[RWSubjectCatalogueController alloc]init];
+    RWSubjectManagerController *catalogue =
+                                        [[RWSubjectManagerController alloc]init];
     
     UINavigationController *catalogueNav = [[UINavigationController alloc]initWithRootViewController:catalogue];
     

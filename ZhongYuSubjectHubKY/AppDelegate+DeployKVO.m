@@ -28,16 +28,13 @@
         
         [deployManager setDeployValue:@[DEFAULT_CLOCK] forKey:CLOCK_TIMES];
         
-        [deployManager addLocalNotificationWithClockString:DEFAULT_CLOCK
-                                                   AndName:@"提醒1"];
-        
         [deployManager setDeployValue:@(100) forKey:EXPERIENCE_TIMES];
         [deployManager setDeployValue:@(100) forKey:TIMES_BUFFER];
         
         self.deployInformation = [deployManager obtainDeployInformation];
     }
     
-    if ([deployManager deployValueForKey:LOGIN] == nil)
+    if (![deployManager deployValueForKey:LOGIN])
     {
         [deployManager setDeployValue:NOT_LOGIN forKey:LOGIN];
     }
@@ -69,7 +66,7 @@
                                 options:NSKeyValueObservingOptionNew
                                 context:nil];
     
-    if ([self.deployInformation objectForKey:TEST_CLOCK] == nil)
+    if (![self.deployInformation objectForKey:TEST_CLOCK])
     {
         [deployManager setDeployValue:RWNOTFOUND forKey:TEST_CLOCK];
     }

@@ -39,10 +39,11 @@ static NSString *const welcomeCell = @"welcomeCell";
 
 - (void)initDataSource
 {
-    imageSource = @[[UIImage imageNamed:@"welcome1ggcy"],
-                    [UIImage imageNamed:@"welcome2ggcy"],
-                    [UIImage imageNamed:@"welcome3ggcy"],
-                    [UIImage imageNamed:@"welcome5ggcy"]];
+    imageSource = @[[UIImage imageNamed:@"welcome1"],
+                    [UIImage imageNamed:@"welcome2"],
+                    [UIImage imageNamed:@"welcome3"],
+                    [UIImage imageNamed:@"welcome4"],
+                    [UIImage imageNamed:@"welcome5"]];
 }
 
 - (void)initLoginButton

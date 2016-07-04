@@ -10,19 +10,19 @@
 #import "RWRequsetManager+UserLogin.h"
 #import "RWNewRegisterViewController.h"
 #import "RWAboutLoginViewController.h"
-@interface RWNewRegisterViewController()
-<
 
-UITableViewDelegate,
-UITableViewDataSource,
-RWRequsetDelegate,
-RWTextFiledCellDelegate,
-RWButtonCellDelegate,
-UITextFieldDelegate
+@interface RWNewRegisterViewController()
+
+<
+    UITableViewDelegate,
+    UITableViewDataSource,
+    RWRequsetDelegate,
+    RWTextFiledCellDelegate,
+    RWButtonCellDelegate,
+    UITextFieldDelegate
 >
 
 @property (strong, nonatomic)UITableView *viewList;
-
 
 @property (weak ,nonatomic)NSTimer *timer;
 
@@ -136,9 +136,7 @@ static NSString *const buttonCell = @"buttonCell";
     
     [RWRequsetManager warningToViewController:self
                                         Title:@"网络连接失败，请检查网络"
-                                        Click:^{
-                                            
-                                        }];
+                                        Click:nil];
 }
 
 - (void)obtainRequestManager
@@ -212,6 +210,7 @@ static NSString *const buttonCell = @"buttonCell";
 {
     return 2;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 
 {
@@ -236,8 +235,6 @@ static NSString *const buttonCell = @"buttonCell";
     if (indexPath.section == 0)
     {
         RWTextFiledCell *cell = [tableView dequeueReusableCellWithIdentifier:textFileCell forIndexPath:indexPath];
-        
-        //        cell.textFiled.keyboardType = UIKeyboardTypeNumberPad;
         
         cell.delegate = self;
         
@@ -273,28 +270,30 @@ static NSString *const buttonCell = @"buttonCell";
         _loginButtonCell = cell;
         
         cell.delegate = self;
-        if (indexPath.row==0) {
-            
-       
-        cell.title = @"上一步";
-        cell.button.backgroundColor = [UIColor colorWithWhite:0.f alpha:0.4];
+        
+        if (indexPath.row==0)
+        {
+            cell.title = @"上一步";
+            cell.button.backgroundColor = [UIColor colorWithWhite:0.f alpha:0.4];
             cell.button.tag=101;
             
         }
-        else{
-            
+        else
+        {
             cell.title = @"下一步";
             cell.button.backgroundColor = [UIColor colorWithWhite:0.f alpha:0.4];
             cell.button.tag=102;
             
         }
         return cell;
-           }
-    
+        
+    }
 }
+
 -(void)buttonClickwithIdentify:(UIButton *)button
 {
-    if ([button.titleLabel.text isEqualToString:@"获取验证码"]) {
+    if ([button.titleLabel.text isEqualToString:@"获取验证码"])
+    {
         clickBtn=button;
         [self userRegisterWithButton];
     }
@@ -303,7 +302,6 @@ static NSString *const buttonCell = @"buttonCell";
 - (void)textFiledCell:(RWTextFiledCell *)cell DidBeginEditing:(NSString *)placeholder
 {
     facePlaceHolder = placeholder;
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -323,7 +321,6 @@ static NSString *const buttonCell = @"buttonCell";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    
     if (section == 0)
     {
         UIView *backView = [[UIView alloc]init];
@@ -333,19 +330,13 @@ static NSString *const buttonCell = @"buttonCell";
         UILabel *titleLabel = [[UILabel alloc]init];
         
         titleLabel.text = @"ZHONGYU · 中域";
-        
         titleLabel.numberOfLines = 0;
-        
         titleLabel.textAlignment = NSTextAlignmentCenter;
-        
         titleLabel.font = [UIFont fontWithName:@"STXingkai-SC-Bold"size:30];
-        
         titleLabel.textColor = [UIColor blackColor];
-        
         titleLabel.shadowOffset = CGSizeMake(1, 1);
-        
         titleLabel.shadowColor = [UIColor goldColor];
-
+        
         [backView addSubview:titleLabel];
         
         [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -409,19 +400,25 @@ static NSString *const buttonCell = @"buttonCell";
     [self addTapGesture];
     
 }
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden=YES;
 }
--(void)viewWillDisappear:(BOOL)animated{
+
+-(void)viewWillDisappear:(BOOL)animated
+{
     
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden=NO;
     
 }
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [clickBtn setTitle:@"获取验证码" forState:(UIControlStateNormal)];
     
     if (requestManager && requestManager.delegate == nil)
     {
@@ -438,11 +435,6 @@ static NSString *const buttonCell = @"buttonCell";
     requestManager.delegate = nil;
     [contrast removeFromSuperview];
 }
-#pragma mark 验证码更新
-
-
-
-
 
 /**
  *  注册验证
@@ -460,7 +452,6 @@ static NSString *const buttonCell = @"buttonCell";
     __block RWTextFiledCell *verCell = [viewList cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     
     verCell.textFiled.text = nil;
-    
     
     if ([requestManager verificationPhoneNumber:phoneNumber])
     {
@@ -494,27 +485,18 @@ static NSString *const buttonCell = @"buttonCell";
                     
                  }];
             }
-            
-            
-
         }];
-    
-    
     }
     else
     {
         [RWRequsetManager warningToViewController:self
                                             Title:@"手机号输入有误,请重新输入"
-                                            Click:^{
-                                                
-                                                textCell.textFiled.text = nil;
-                                                
-                                                [textCell.textFiled becomeFirstResponder];
-                                            }];
-
-        
-        
-        
+                                            Click:^
+        {
+            textCell.textFiled.text = nil;
+            
+            [textCell.textFiled becomeFirstResponder];
+        }];
     }
 
 }
@@ -542,7 +524,8 @@ static NSString *const buttonCell = @"buttonCell";
     
 }
 
--(void)verificationCodeWithCode{
+-(void)verificationCodeWithCode
+{
 
     [_timer setFireDate:[NSDate distantFuture]];
     
@@ -560,6 +543,12 @@ static NSString *const buttonCell = @"buttonCell";
                                                 Title:@"请输入验证码"
                                                 Click:nil];
         }
+        
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+        
+        [SVProgressHUD show];
         
         [requestManager verificationWithVerificationCode:verificationCell.textFiled.text
                                              PhoneNumber:phoneNumberCell.textFiled.text
@@ -581,11 +570,8 @@ static NSString *const buttonCell = @"buttonCell";
                  
                  [RWRequsetManager warningToViewController:self
                                                      Title:@"验证失败"
-                                                     Click:^{
-                                                         
-                                                     }];
+                                                     Click:nil];
              }
-
         }];
     
     }

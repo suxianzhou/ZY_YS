@@ -103,8 +103,7 @@
 //    NSString *body = notification.alertBody
 }
 
-- (void)application:(UIApplication *)application
-didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     [JPUSHService registerDeviceToken:deviceToken];
 }

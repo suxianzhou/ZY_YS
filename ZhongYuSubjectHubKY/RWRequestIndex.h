@@ -29,13 +29,13 @@
 //>> 推荐列表
 #define UPDATE_USERNAME @"http://www.zhongyuedu.com/api/yy_yx_post.php"
 //>> 上传
-#define EXPERIENCE_TIMES_URL @"http://www.zhongyuedu.com/api/jin_limit.php"
+#define EXPERIENCE_TIMES_URL @"http://api.zhongyuedu.com/tik/yx/yx_limit.php"
 //>> 天王盖地虎
 #define RECEIVE_PUSH @"http:/yx.zhongyuedu.com/bencandy.php?fid=240&aid=5164"
 //>> push
 #define LOGIN_URL @"http://www.zhongyuedu.com/api/login.php"
 //>> 登录
-#define REGISTER_URL @"http://www.zhongyuedu.com/api/register.php.php"
+#define REGISTER_URL @"http://www.zhongyuedu.com/api/register.php"
 //>> 注册
 #define REPLACE_PASSWORD_URL @"http://www.zhongyuedu.com/api/change_pwd.php"
 //>> 重置密码

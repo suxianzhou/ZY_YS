@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "RWLoginTableViewCell.h"
 #import "RWRequsetManager+UserLogin.h"
+
 @interface RWAboutLoginViewController : UIViewController
 
-
-
 @property (nonatomic, copy) NSString * userPassword;
+
 @end

@@ -15,7 +15,8 @@
 
 <
     UITableViewDelegate,
-    UITableViewDataSource
+    UITableViewDataSource,
+    RWAnswerViewDelegate
 >
 
 @property (nonatomic,strong) UITableView *sujectClasses;
@@ -121,6 +122,8 @@ static NSString *const classList = @"classList";
     
     RWAnswerViewController *answerView = [[RWAnswerViewController alloc]init];
     
+    answerView.delegate = self;
+    
     answerView.headerTitle = [_classSource[indexPath.row] valueForKey:@"subjectclass"];
     
     NSArray *subjectSource = [baseManager obtainSubjectsWithIndexName:[_classSource[indexPath.row] valueForKey:@"subjectclass"] AndHubName:[_classSource [indexPath.row] valueForKey:@"hub"]];
@@ -132,6 +135,11 @@ static NSString *const classList = @"classList";
     answerView.beginIndexPath = [baseManager obtainBeginWithBeforeOfLastSubjectWithSubjectSource:subjectSource];
     
     [self.navigationController pushViewController:answerView animated:YES];
+}
+
+- (NSString *)itemButtonString
+{
+    return @"重新答题";
 }
 
 @end

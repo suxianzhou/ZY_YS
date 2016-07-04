@@ -30,8 +30,6 @@
 
 @property (strong,nonatomic)RWButtonCell * loginButtonCell;
 
-@property (weak, nonatomic)UIButton *clickBtn;
-
 @property (assign ,nonatomic)NSInteger countDown;
 
 @property (nonatomic,assign)CGPoint viewCenter;
@@ -52,7 +50,6 @@ static NSString *const buttonCell = @"buttonCell";
 @synthesize requestManager;
 @synthesize deployManager;
 @synthesize countDown;
-@synthesize clickBtn;
 @synthesize viewCenter;
 @synthesize facePlaceHolder;
 @synthesize contrast;
@@ -129,11 +126,14 @@ static NSString *const buttonCell = @"buttonCell";
 {
     NSLog(@"%@",error.description);
     
+    [SVProgressHUD dismiss];
+    
     [RWRequsetManager warningToViewController:self
                                         Title:@"网络连接失败，请检查网络"
-                                        Click:^{
-                                            
-                                        }];
+                                        Click:^
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
 }
 
 - (void)obtainRequestManager
@@ -320,7 +320,7 @@ static NSString *const buttonCell = @"buttonCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 45;
+    return 60;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -332,7 +332,6 @@ static NSString *const buttonCell = @"buttonCell";
     
     return self.view.frame.size.height * 0.02;
 }
-
 
 /**
  *  点击下一步按钮
@@ -405,6 +404,8 @@ static NSString *const buttonCell = @"buttonCell";
 
 -(void)userPassWordUpdte{
     [self obtainRequestManager];
+    
+    
     __block RWTextFiledCell *textCell = [viewList cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     
     NSString *firstPassWord = textCell.textFiled.text;
@@ -416,66 +417,66 @@ static NSString *const buttonCell = @"buttonCell";
         
     if ([firstPassWord isEqualToString:secondPassWord]) {
         
-        [requestManager replacePasswordWithUsername:_userPassword AndPassword:firstPassWord];
-
-
-       
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
         
-            
-            
-        }else{
-            [RWRequsetManager warningToViewController:self
-             
-                                                Title:@"两次输入不一致"
-             
-                                                Click:^{
-                                                    
-                                                    textCell.textFiled.text = nil;
-                                                    verCell.textFiled.text=nil;
-                                                    [textCell.textFiled
-                                                     becomeFirstResponder];
-                                                }];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+        
+        [SVProgressHUD show];
+        
+        [requestManager replacePasswordWithUsername:_userPassword
+                                        AndPassword:firstPassWord];
+    }
+    else
+    {
+        [RWRequsetManager warningToViewController:self
+                                            Title:@"两次输入不一致"
+                                            Click:^
+        {
+            textCell.textFiled.text = nil;
+            verCell.textFiled.text=nil;
+            [textCell.textFiled becomeFirstResponder];
+        }];
 
         }
-    }else{
+    }
+    else
+    {
         [RWRequsetManager warningToViewController:self
-         
                                             Title:@"密码格式不正确"
-         
-                                            Click:^{
-                                                
-                                                textCell.textFiled.text = nil;
-                                                verCell.textFiled.text=nil;
-                                                [textCell.textFiled
-                                                 becomeFirstResponder];
-                                            }];
-        
-           }
-    
-    
-    
-    
-    
-    
-
-    
-
-    
-    
-    
-}
-- (void)replacePasswordResponds:(BOOL)isSuccessed ErrorReason:(NSString *)reason{
-    
-    if (isSuccessed) {
-         [self.navigationController popToRootViewControllerAnimated:YES];
-    }else{
-        [RWRequsetManager warningToViewController:self Title:reason Click:^{
-            
+                                            Click:^
+        {
+            textCell.textFiled.text = nil;
+            verCell.textFiled.text=nil;
+            [textCell.textFiled becomeFirstResponder];
         }];
     }
-    
-    
+
 }
+
+- (void)replacePasswordResponds:(BOOL)isSuccessed ErrorReason:(NSString *)reason
+{
+    [SVProgressHUD dismiss];
+    
+    if (isSuccessed)
+    {
+        [RWRequsetManager warningToViewController:self
+                                            Title:@"修改成功"
+                                            Click:^
+         {
+             [self.navigationController popToRootViewControllerAnimated:YES];
+         }];
+    }
+    else
+    {
+        [RWRequsetManager warningToViewController:self
+                                            Title:reason
+                                            Click:^
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }
+}
+
 - (void)dealloc {
     
     [[NSNotificationCenter defaultCenter] removeObserver:UIKeyboardWillShowNotification name:nil object:self];
