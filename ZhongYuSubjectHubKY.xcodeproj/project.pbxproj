@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043E94F31D49B7F5000C5D25 /* KTDropdownMenuView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 043E94F01D49B7F5000C5D25 /* KTDropdownMenuView.bundle */; };
+		043E94F41D49B7F5000C5D25 /* KTDropdownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043E94F21D49B7F5000C5D25 /* KTDropdownMenuView.m */; };
 		047C98861CDC225B0080F8F1 /* UMengAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 047C98831CDC225B0080F8F1 /* UMengAnalyticsManager.m */; };
 		047C98871CDC225B0080F8F1 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 047C98841CDC225B0080F8F1 /* libMobClickLibrary.a */; };
 		120025621CE76D3800B203D4 /* RWWelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 120025611CE76D3800B203D4 /* RWWelcomeController.m */; };
@@ -484,6 +486,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		043E94F01D49B7F5000C5D25 /* KTDropdownMenuView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KTDropdownMenuView.bundle; sourceTree = "<group>"; };
+		043E94F11D49B7F5000C5D25 /* KTDropdownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTDropdownMenuView.h; sourceTree = "<group>"; };
+		043E94F21D49B7F5000C5D25 /* KTDropdownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTDropdownMenuView.m; sourceTree = "<group>"; };
 		047C98801CDC225B0080F8F1 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		047C98811CDC225B0080F8F1 /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
 		047C98821CDC225B0080F8F1 /* UMengAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMengAnalyticsManager.h; sourceTree = "<group>"; };
@@ -1339,6 +1344,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		043E94EF1D49B7F5000C5D25 /* KTDropdownMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				043E94F01D49B7F5000C5D25 /* KTDropdownMenuView.bundle */,
+				043E94F11D49B7F5000C5D25 /* KTDropdownMenuView.h */,
+				043E94F21D49B7F5000C5D25 /* KTDropdownMenuView.m */,
+			);
+			path = KTDropdownMenuView;
+			sourceTree = "<group>";
+		};
 		047C987D1CDC225B0080F8F1 /* UMAnalytics_Sdk_3.6.6 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1555,6 +1570,7 @@
 		1261675B1D10FAF70055438B /* umeng_community_ios_v2.5.2 */ = {
 			isa = PBXGroup;
 			children = (
+				043E94EF1D49B7F5000C5D25 /* KTDropdownMenuView */,
 				1261675C1D10FAF70055438B /* Community_component */,
 				126167A31D10FAF70055438B /* Community_weibo */,
 				126168B81D10FAF70055438B /* LibUMCommunity */,
@@ -3380,6 +3396,7 @@
 				12EFFD661CD8A0C00030C74F /* Share.png in Resources */,
 				12A2ADB71CDDEAC30027DD3B /* MySave.png in Resources */,
 				127155661D23B47300F24FF9 /* tabbar-upload@2x.png in Resources */,
+				043E94F31D49B7F5000C5D25 /* KTDropdownMenuView.bundle in Resources */,
 				126169091D10FAF70055438B /* UMSocialSDKResourcesNew.bundle in Resources */,
 				127155591D23B47300F24FF9 /* player-volume-box.png in Resources */,
 				127155701D23B47300F24FF9 /* upload-status-uploading@2x.png in Resources */,
@@ -3651,6 +3668,7 @@
 				125D991D1CD0825700871ED4 /* RWSubjectsModel.m in Sources */,
 				1261697D1D10FAF70055438B /* UMComProfileSettingController.m in Sources */,
 				126169341D10FAF70055438B /* UMAssetsCollectionController.m in Sources */,
+				043E94F41D49B7F5000C5D25 /* KTDropdownMenuView.m in Sources */,
 				BAF3C5961CD49F4300D66B03 /* RWCollectHub+CoreDataProperties.m in Sources */,
 				129B656E1CD9DF74007A7224 /* RWBannersModel.m in Sources */,
 				1261692F1D10FAF70055438B /* UMComMutiStyleTextView.m in Sources */,
@@ -3952,8 +3970,8 @@
 			baseConfigurationReference = 4810B9241236EC919F3E7DC7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: TengFei Li (7XNMZG3S4E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: TengFei Li (7XNMZG3S4E)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3963,7 +3981,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Macro.pch";
 				INFOPLIST_FILE = ZhongYuSubjectHubKY/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4024,7 +4042,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhongyuedu.tiku;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "219d32cc-e6ec-43c2-b455-40838b83762d";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/lib";
 				VALIDATE_PRODUCT = NO;
@@ -4036,8 +4054,8 @@
 			baseConfigurationReference = 94FEAEABF1F0FC2F7EF59ECE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: TengFei Li (7XNMZG3S4E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: TengFei Li (7XNMZG3S4E)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4047,7 +4065,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Macro.pch";
 				INFOPLIST_FILE = ZhongYuSubjectHubKY/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4109,7 +4127,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhongyuedu.tiku;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "219d32cc-e6ec-43c2-b455-40838b83762d";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/lib";
 			};
